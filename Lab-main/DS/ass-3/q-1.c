@@ -66,7 +66,7 @@ void insert (struct node **head , int x , int n){
         temp->next = newnode;
     }
     else{
-        for(int i=0;i<x-2;i++){\
+        for(int i=0;i<x-2;i++){
             temp = temp->next;
         }
         printf("Enter the data: ");
