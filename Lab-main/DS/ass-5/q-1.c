@@ -38,6 +38,7 @@ void printlist(struct node **head){
         printf("%d-> ",temp->data);
         temp = temp->next;
     }
+    printf("\n");
 }
 int size(struct node **head){
     struct node *temp = *head;
@@ -47,6 +48,10 @@ int size(struct node **head){
         count++;
         temp = temp->next;
     }
+    return count;
+}
+void insert(struct node **head,int n){
+    
 }
 int main(){
     // printf("DFGFHFDHFDGHDDGHF");
@@ -58,6 +63,7 @@ int main(){
     printf("Inital data: ");
     printlist(&head);
     n = size(&head);
-    insert(&head , n);
+    // insert(&head , n);
+    printf("%d",n);
     return 0;
 }
