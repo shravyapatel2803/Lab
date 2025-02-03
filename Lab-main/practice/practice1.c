@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
-struct branch{
-    int data;
-    struct branch *right;
-    
-};
+int main(){
+    int n;
+    scanf("%d",&n);
+    printf("%d",n);
+    return 0;
+}

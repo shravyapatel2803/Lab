@@ -51,7 +51,45 @@ int size(struct node **head){
     return count;
 }
 void insert(struct node **head,int n){
-    
+    printf("Enter the position you want to insert the data: ");
+    int x;
+    scanf("%d",&x);
+    struct node *temp , *newnode;
+    newnode = (struct node * )malloc(sizeof(struct node));
+    if(newnode == NULL){
+        printf("Memory is not allocated properly");
+        return;
+    }
+    if(x==1){
+        printf("Enter your data: ");
+        scanf("%d",&(newnode)->data);
+        newnode->next = *head;
+        *head = newnode;
+        temp = *head;
+        temp = temp->next;
+        return;
+    }
+    else if(x==n){
+        temp = *head;
+        newnode = (struct node * )malloc(sizeof(struct node));
+        for(int i=1;i<=n-1;i++){
+            temp = temp->next;
+        }
+        printf("Enter the data: ");
+        scanf("%d",&newnode->data);
+        newnode->next = *head;
+        temp->next = newnode;
+    }
+    else{
+        for(int i=0;i<x-2;i++){
+            temp = temp->next;
+        }
+        printf("Enter the data: ");
+        scanf("%d",&(newnode)->data);
+        newnode->next=temp->next;
+        temp->next=newnode;
+        temp = newnode->next;
+    }
 }
 int main(){
     // printf("DFGFHFDHFDGHDDGHF");
@@ -63,7 +101,7 @@ int main(){
     printf("Inital data: ");
     printlist(&head);
     n = size(&head);
-    // insert(&head , n);
+    insert(&head , n);
     printf("%d",n);
     return 0;
 }
