@@ -6,8 +6,8 @@ def is_perfect_square(n1,n2):
 t = int(input("Enter no of case:-"))
 for i in range(t):
     n = int(input(f"Enter your {i} no"))
-    n1 = (5(n*n)+4)
-    n2 = 5(n*n)-4
+    n1 = (5*(n*n)+4)
+    n2 = 5*(n*n)-4
     if is_perfect_square(n1,n2):
         print(f"{n} is fibo")
     else:
