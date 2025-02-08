@@ -66,6 +66,8 @@ void insert (struct node **head , int x , int n){
         temp->next = newnode;
     }
     else{
+        temp =*head;
+        newnode = (struct node *)malloc(sizeof(struct node));
         for(int i=0;i<x-2;i++){
             temp = temp->next;
         }
