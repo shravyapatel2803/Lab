@@ -82,7 +82,13 @@ void insert (struct node **head , int x , int n){
 }
 void delete(struct node **head , int x , int n){
     struct node * temp=*head,newnode;
+
     
+}
+void size(struct node **head){
+    struct node *temp = *head;
+    int size = 0;
+    temp = temp->next;
 }
 int main(void){
     struct node *head;
@@ -91,6 +97,22 @@ int main(void){
     scanf("%d",&n);
     intial_elements(&head,n);
     printlist(&head);
+    int y = 1;
+    while(y){
+        printf("Enter 1 to insert the element\nEnter 2 to delete the element\nEnter 3 to undo\nEnter 4 to redo\nEnter 5 to exit");
+        int condition;
+        scanf("%d",&condition);
+        switch (condition)
+        {
+        case 1:
+            
+            break;
+        case 2:
+            break;
+        default:
+            break;
+        }
+    }
     int x;
     printf("Enter your position where you want to enter your data\n");
     scanf("%d",&x);
