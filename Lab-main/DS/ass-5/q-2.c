@@ -83,9 +83,58 @@ void printlist(struct node **head){
     }
     printf("NULL\n");
 }
-void add_equations(struct node **eq1,struct node **eq2,struct node **final){
-    
-}
+// void add_equations(struct node **eq1, struct node **eq2, struct node **final) {
+//     *final = NULL; 
+
+//     struct node *temp1 = *eq1;
+//     struct node *temp2 = *eq2;
+//     struct node *temp_final = NULL;
+
+
+//     while (temp1 != NULL || temp2 != NULL) {
+//         struct node *new_term = (struct node *)malloc(sizeof(struct node));
+//         if (new_term == NULL) {
+//             perror("Memory allocation failed");
+//             exit(EXIT_FAILURE);
+//         }
+//         new_term->next = NULL;
+
+//         if (temp1 == NULL) { 
+//             new_term->coff = temp2->coff;
+//             new_term->expo = temp2->expo;
+//             temp2 = temp2->next;
+//         } else if (temp2 == NULL) { 
+//             new_term->coff = temp1->coff;
+//             new_term->expo = temp1->expo;
+//             temp1 = temp1->next;
+//         } else if (temp1->expo == temp2->expo) { 
+//             new_term->coff = temp1->coff + temp2->coff;
+//             new_term->expo = temp1->expo;
+//             temp1 = temp1->next;
+//             temp2 = temp2->next;
+//             if (new_term->coff == 0) { 
+//                 free(new_term);
+//                 continue; 
+//             }
+//         } else if (temp1->expo > temp2->expo) { 
+//             new_term->coff = temp1->coff;
+//             new_term->expo = temp1->expo;
+//             temp1 = temp1->next;
+//         } else { 
+//             new_term->coff = temp2->coff;
+//             new_term->expo = temp2->expo;
+//             temp2 = temp2->next;
+//         }
+
+//         if (*final == NULL) { 
+//             *final = new_term;
+//             temp_final = *final;
+//         } else { 
+//             temp_final->next = new_term;
+//             temp_final = new_term;
+//         }
+//     }
+// }
 
 void main(){
     struct node *equation1=NULL,*equation2=NULL,*final_equation=NULL;
