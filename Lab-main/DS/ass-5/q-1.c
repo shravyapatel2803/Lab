@@ -135,11 +135,24 @@ void delete(struct node **head,int n){
         return;
     }
 }
-struct change{
-    int index;
-    int data;
-};
-void undo_fun3(struct change **undo){
+void copy_List(struct node **copy,struct node **head , int n){
+    struct node *newnode ,*temp = *head,*tail;
+    *copy = NULL;
+    for (int i = 0; i < n; i++)
+    {
+        newnode= (struct node *)malloc(sizeof(struct node));
+        newnode->data = temp->data;
+        newnode->next=NULL;
+        if(*copy==NULL){
+            *copy = newnode;
+            tail = newnode;
+        }else{
+            tail->next=newnode;
+            tail = newnode;
+        }
+        temp = temp->next;
+    }
+    tail->next=*copy;
     
 }
 int main() {
@@ -148,12 +161,10 @@ int main() {
     scanf("%d", &n);
 
     struct node *head = NULL;
-    struct change *undo=NULL;
+    struct node *undo=NULL,*redo=NULL;
     intial_elements(&head, n);
     printf("Initial data: ");
     printlist(&head);
-
-    int condition;
     while (1) {
         printf("Enter 1 to insert\n");
         printf("Enter 2 to delete\n");
@@ -161,23 +172,55 @@ int main() {
         printf("Enter 4 to redo\n");
         printf("Enter 5 to exit\n"); 
         printf("Enter your condition: ");
+        int condition;
         scanf("%d", &condition);
 
         switch (condition) {
             case 1:
                 n = size(&head);
-                undo_fun(&undo,&head,n);
+                copy_List(&undo,&head,n);
                 insert(&head, n);
                 printlist(&head);
                 printlist(&undo);
                 break;
             case 2:
-                n = size(&head); // Update n!
+                n = size(&head);
+                copy_List(&undo,&head,n);
                 delete(&head, n);
                 printlist(&head);
                 break;
             case 3:
-
+                if(undo == NULL){
+                    printf("You have nothing to undo\n");
+                    break;
+                }
+                else{
+                    n = size(&head);
+                    copy_List(&redo,&head,n);
+                    n = size(&undo);
+                    copy_List(&head,&undo,n);
+                    undo = NULL;
+                    printf("undo: ");
+                    printlist(&head);
+                    // printlist(&redo);
+                    break;
+                }
+            case 4:
+                if(redo == NULL){
+                    printf("You have nothing to redo\n");
+                    break;
+                }
+                else{
+                    n = size(&head);
+                    copy_List(&undo,&head,n);
+                    n = size(&redo);
+                    copy_List(&head,&redo,n);
+                    redo = NULL;
+                    printf("redo: ");
+                    printlist(&head);
+                    // printlist(&undo);
+                    break;
+                }
             case 5:
                 return 0; // Exit the program
             default:
@@ -186,5 +229,6 @@ int main() {
         }
     }
 
+    
     return 0;
 }

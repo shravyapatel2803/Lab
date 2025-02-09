@@ -83,6 +83,9 @@ void printlist(struct node **head){
     }
     printf("NULL\n");
 }
+void add_equations(struct node **eq1,struct node **eq2,struct node **final){
+    
+}
 
 void main(){
     struct node *equation1=NULL,*equation2=NULL,*final_equation=NULL;
