@@ -135,37 +135,56 @@ void delete(struct node **head,int n){
         return;
     }
 }
-int main(){
-    // printf("DFGFHFDHFDGHDDGHF");
-    int n ;
+struct change{
+    int index;
+    int data;
+};
+void undo_fun3(struct change **undo){
+    
+}
+int main() {
+    int n;
     printf("Enter the number of the elements you want to enter in the linked list: ");
-    scanf("%d",&n);
-    struct node *head = NULL,*undo = NULL;
-    intial_elements(&head,n);
-    printf("Inital data: ");
+    scanf("%d", &n);
+
+    struct node *head = NULL;
+    struct change *undo=NULL;
+    intial_elements(&head, n);
+    printf("Initial data: ");
     printlist(&head);
-    int y =1;
-    while(y){
-        printf("Enter 1 to insert\nEnter 2 to delete\nEnter 3 to undo\nEnter 4 to redo\nEnter 5 to exit\n");
-        int condition;
+
+    int condition;
+    while (1) {
+        printf("Enter 1 to insert\n");
+        printf("Enter 2 to delete\n");
+        printf("Enter 3 to undo\n");
+        printf("Enter 4 to redo\n");
+        printf("Enter 5 to exit\n"); 
         printf("Enter your condition: ");
-        scanf("%d",&condition);
-        switch (condition)
-        {
-        case 1:
-            int n = size(&head);
-            insert(&head,n);
-            printlist(&head);
-            // undo(&undo,&head)
-            break;
-        case 2 :
-            int n = size(&head);
-            delete(&head,n);
-            printlist(&head);
-            break;
-        default:
-            break;
+        scanf("%d", &condition);
+
+        switch (condition) {
+            case 1:
+                n = size(&head);
+                undo_fun(&undo,&head,n);
+                insert(&head, n);
+                printlist(&head);
+                printlist(&undo);
+                break;
+            case 2:
+                n = size(&head); // Update n!
+                delete(&head, n);
+                printlist(&head);
+                break;
+            case 3:
+
+            case 5:
+                return 0; // Exit the program
+            default:
+                printf("Invalid input. Please try again.\n"); // Handle invalid input
+                break;
         }
     }
+
     return 0;
 }
