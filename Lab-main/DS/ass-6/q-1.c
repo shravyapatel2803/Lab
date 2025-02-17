@@ -75,34 +75,44 @@ void insert(node **head)
 }
 void pop(node **head)
 {
-    node *temp = *head, *temp1;
+    if (*head == NULL)  // Stack underflow check
+    {
+        printf("Stack is empty\n");
+        return;
+    }
+
     int y = 1;
     while (y)
     {
-        printf("Enter 1 to pop the element else enter 2 to exit: ");
+        printf("Enter 1 to pop the element, else enter 2 to exit: ");
         int condition;
         scanf("%d", &condition);
 
         switch (condition)
         {
         case 1:
-            temp = temp1;
-            if (temp->pre == NULL)
             {
-                printf("%d->NULL", (temp->data));
-                return;
+                node *temp = *head;
+                printf("Popped: %d\n", temp->data);
+                *head = temp->pre;  // Move head to next node
+                free(temp);         // Free the old head
+                if (*head == NULL)
+                {
+                    printf("Stack is now empty.\n");
+                    return;
+                }
             }
-            /* code */
-            *head = temp->pre;
-            temp1 = temp->pre;
-            free(temp);
             break;
-
+        case 2:
+            y = 0;
+            break;
         default:
+            printf("Try again\n");
             break;
         }
     }
 }
+
 int main()
 {
     node *head = NULL;
