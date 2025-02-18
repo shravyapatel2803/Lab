@@ -1,2 +1,2 @@
-class Password_manager:
+# class Password_manager:
     
