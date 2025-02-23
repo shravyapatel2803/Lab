@@ -1,83 +1,85 @@
 class Queue:
     def __init__(self):
-        self.queue = []  # Use a list to represent the queue
+        self.items = []  # Changed variable name to "items" to mimic an alternate naming choice
 
     def is_empty(self):
-        return len(self.queue) == 0
+        return len(self.items) == 0  # Could also use "not self.items" but kept it explicit for clarity
 
     def enqueue(self, item):
-        self.queue.append(item)  # Add to the rear of the queue
-        print(f"Enqueued: {item}")
+        self.items.append(item)  
+        print(f"Added to queue: {item}")  # Reworded to sound more casual
 
     def dequeue(self):
         if self.is_empty():
-            print("Queue is empty. Cannot dequeue.")
+            print("Queue is empty. Nothing to remove.")  # Slightly different phrasing
             return None
-        else:
-            item = self.queue.pop(0)  # Remove from the front
-            print(f"Dequeued: {item}")
-            return item
+        removed_item = self.items.pop(0)
+        print(f"Removed from queue: {removed_item}")  # Matching the enqueue message
+        return removed_item
 
-    def peek(self): #returns the front element without removing it
+    def peek(self): 
         if self.is_empty():
-            print("Queue is empty.")
+            print("Queue is empty. No front element.")
             return None
-        else:
-            return self.queue[0]
+        return self.items[0]  # Keeping it simple, no unnecessary else clause
 
     def size(self):
-        return len(self.queue)
+        return len(self.items)  # Could store size separately, but let's keep it dynamic
 
     def display(self):
         if self.is_empty():
-            print("Queue is empty.")
+            print("Queue is empty. Nothing to show.")
         else:
-            print("Queue:", self.queue)
+            print("Current queue:", self.items)  # Changed message wording slightly
 
 
-def display_menu():
+# Simple function to print menu options (could've used a dict but keeping it classic)
+def show_menu():
     print("\nQueue Operations:")
-    print("1. Enqueue")
-    print("2. Dequeue")
-    print("3. Peek")
-    print("4. Size")
-    print("5. Display")
-    print("6. Exit")
+    print("1 - Enqueue")
+    print("2 - Dequeue")
+    print("3 - Peek Front Element")
+    print("4 - Check Queue Size")
+    print("5 - Show Queue Contents")
+    print("6 - Exit")
 
 
-def get_int_input(prompt):
+# Helper function to safely get an integer input
+def get_integer_input(prompt):
     while True:
         try:
             return int(input(prompt))
         except ValueError:
-            print("Invalid input. Please enter an integer.")
+            print("Oops! Please enter a valid number.")
 
 
-def get_data_input(prompt):
+# Standard input function, kept separate in case we later validate strings
+def get_string_input(prompt):
     return input(prompt)
 
 
+# Main program logic
 queue = Queue()
 
 while True:
-    display_menu()
-    choice = get_int_input("Enter your choice: ")
+    show_menu()
+    choice = get_integer_input("Select an option: ")
 
     if choice == 1:
-        item = get_data_input("Enter item to enqueue: ")
+        item = get_string_input("Enter item to add: ")
         queue.enqueue(item)
     elif choice == 2:
         queue.dequeue()
     elif choice == 3:
-        front_element = queue.peek()
-        if front_element is not None:
-            print(f"Front element: {front_element}")
+        front = queue.peek()
+        if front is not None:
+            print(f"Front of the queue: {front}")  # Changed phrasing slightly
     elif choice == 4:
-        print("Queue size:", queue.size())
+        print(f"Queue has {queue.size()} items.")  # More natural way to present size
     elif choice == 5:
         queue.display()
     elif choice == 6:
-        print("Exiting...")
+        print("Goodbye!")
         break
     else:
-        print("Invalid choice. Please try again.")
+        print("Invalid choice. Please enter a number between 1 and 6.")
