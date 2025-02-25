@@ -1,4 +1,3 @@
-
 class password_manager:
     def __init__(self):
         self.old_password=[]
