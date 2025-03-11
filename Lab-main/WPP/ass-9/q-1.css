@@ -1,0 +1,14 @@
+/* style.css */
+body {
+    background-image: url("https://plus.unsplash.com/premium_photo-1683619761468-b06992704398?q=80&w=1930&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* Replace with your image path */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white; /* example color change for text */
+    text-align: center;
+  }
+  
+  .content{
+      padding: 20px;
+      background-color: rgba(0,0,0,0.5); /*add a semi transparent background to the content div so the text is more readable.*/
+  }

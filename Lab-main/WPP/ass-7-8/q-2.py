@@ -79,7 +79,7 @@ while True:
     elif choice == 5:
         queue.display()
     elif choice == 6:
-        print("Goodbye!")
+        print("Exiting....")
         break
     else:
         print("Invalid choice. Please enter a number between 1 and 6.")
