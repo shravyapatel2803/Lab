@@ -1,14 +1,57 @@
 /* style.css */
 body {
-    background-image: url("https://plus.unsplash.com/premium_photo-1683619761468-b06992704398?q=80&w=1930&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* Replace with your image path */
+    background-image: url("https://www.shutterstock.com/shutterstock/photos/2295925435/display_1500/stock-photo-stir-fried-crispy-shrimp-with-cashew-nuts-and-sweet-pepper-in-white-plate-thai-food-not-spicy-2295925435.jpg"); /* Replace with your image path */
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-attachment: fixed;
     color: white; /* example color change for text */
     text-align: center;
   }
   
   .content{
-      padding: 20px;
-      background-color: rgba(0,0,0,0.5); /*add a semi transparent background to the content div so the text is more readable.*/
+    color:rgb(0, 0, 0);
   }
+  a button {
+    cursor: pointer;
+    transition: background-color 0.5s ,opacity 0.5s ;
+    border-radius: 20px;
+    
+    
+  }
+  a button:hover{
+    background-color: black;
+    color: white;
+    opacity: 0.75;
+  }
+  a button:active{
+    opacity: 0.5;
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    margin-left: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
