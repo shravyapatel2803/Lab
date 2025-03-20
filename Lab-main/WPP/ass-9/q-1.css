@@ -1,57 +1,104 @@
-/* style.css */
+html,
 body {
-    background-image: url("https://www.shutterstock.com/shutterstock/photos/2295925435/display_1500/stock-photo-stir-fried-crispy-shrimp-with-cashew-nuts-and-sweet-pepper-in-white-plate-thai-food-not-spicy-2295925435.jpg"); /* Replace with your image path */
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-attachment: fixed;
-    color: white; /* example color change for text */
-    text-align: center;
-  }
-  
-  .content{
-    color:rgb(0, 0, 0);
-  }
-  a button {
-    cursor: pointer;
-    transition: background-color 0.5s ,opacity 0.5s ;
-    border-radius: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.upper {
+    background-image: url("1.jpg");
+    background-size: cover;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.upper .header {
+    display: flex;
+    justify-content: end;
+    margin: 0px;
+}
+
+.upper .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 30px;
+}
+
+.upper .content h1 {
+    font-size: 150px;
+    margin-bottom: 0;
+}
+
+.upper .content article {
+    margin-top: 0;
+}
+
+.upper .header button {
+    border-radius: 7px;
+    margin: 5px;
+    transition: all 0.5s;
+    padding: 10px;
+    /* font-size: 16px;
     
+    border: 2px solid #ccc;
+    border-radius: 5px; */ 
+    outline : none;
+}
+
+.upper .header button a {
+    text-decoration: none;
+    /* font-size: 20px; */
+    color: orange;
+}
+
+.upper .header button:hover {
+    background-color: black;
+
+}
+
+.upper .header button:hover a {
+    color: white;
+}
+.upper .search{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.upper .search input{
+    border-radius: 15px;
+    width: 200px;
+    height: 30px;
+    margin-bottom:15px ;
+    margin-top: 10px;
+    transition: 0.5s ease-in-out;
+}
+.upper .search button{
+    color: orange;
+    border-radius: 15px;
     
-  }
-  a button:hover{
+    height: 30px;
+    margin-bottom:15px ;
+    margin-left: -60px;
+    margin-top: 12px;
+    outline: none;
+    transition: 0.5s ease-in-out;
+    
+}
+.upper .search input:hover{
+    width: 400px;
     background-color: black;
     color: white;
-    opacity: 0.75;
-  }
-  a button:active{
-    opacity: 0.5;
-  }
-  .search-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
 }
-
-input {
-    padding: 10px;
-    font-size: 16px;
-    width: 200px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-}
-
-button {
-    padding: 10px 15px;
-    margin-left: 5px;
-    background-color: #007bff;
+.upper .search input:active{
+    width: 400px;
+    background-color: black;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
-
-button:hover {
-    background-color: #0056b3;
+.upper .search button:hover{
+    translate: -5px;
+    background-color: black;
+    color: white;
 }
