@@ -24,7 +24,7 @@ body {
     align-items: center;
 
     color: white;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .upper .content h1 {
@@ -66,21 +66,27 @@ body {
   display: flex;
   justify-content: center;
   margin-bottom: 6px;
+  transition: 0.5s ease-in-out;
+}
+.upper .search:hover{
+    
+    color: white;
 }
 .upper .search input{
     border-radius: 15px;
-    width: 200px;
+    width: 315px;
     height: 30px;
-    margin-bottom:15px ;
+    margin-bottom:150px ;
     margin-top: 10px;
-    transition: 0.5s ease-in-out;
+    transition: 0.5s ;
+    font-weight: bold;
 }
 .upper .search button{
     color: orange;
     border-radius: 15px;
     
     height: 30px;
-    margin-bottom:15px ;
+    margin-bottom:150px ;
     margin-left: -60px;
     margin-top: 12px;
     outline: none;
@@ -89,16 +95,25 @@ body {
 }
 .upper .search input:hover{
     width: 400px;
-    background-color: black;
-    color: white;
+    background-color: rgba(128, 128, 128, 0.952);
+    color: rgb(0, 0, 0);
+}
+.upper .search ::placeholder{
+    color: black;
+    font-weight:bold ;
 }
 .upper .search input:active{
     width: 400px;
     background-color: black;
     color: white;
 }
+
 .upper .search button:hover{
-    translate: -5px;
+    translate: -10px;
+    background-color: rgba(128, 128, 128, 0.952);
+    color: white;
+}
+.upper .search button:active{
     background-color: black;
     color: white;
 }
