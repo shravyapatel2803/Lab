@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct node {
     int data;
@@ -22,18 +22,16 @@ void insert(struct node **front, struct node **rear) {
         temp1 = *rear;
         newnode = (struct node*)malloc(sizeof(struct node));
         printf("Enter the data & priority of element: ");
-        scanf("%d", &(newnode->data));
-        scanf("%d",&(newnode->priority));
+        scanf("%d %d", &(newnode->data), &(newnode->priority));
+        newnode->next = NULL;
+        newnode->previous = NULL;
 
         if (*front == NULL) {
             *front = newnode;
             *rear = newnode;
-            newnode->next = NULL;
-            newnode->previous = NULL;
         } else {
             if (newnode->priority >= temp1->priority) {
                 temp1->next = newnode;
-                newnode->next = NULL;
                 newnode->previous = temp1;
                 *rear = newnode; // Update the rear pointer
             } else {
@@ -43,7 +41,7 @@ void insert(struct node **front, struct node **rear) {
                         if (temp2->previous != NULL) {
                             temp2->previous->next = newnode;
                         } else {
-                            *front = newnode; // Update the front pointer if new node is at the beginning
+                            *front = newnode; // Update front if new node is at the beginning
                         }
                         newnode->previous = temp2->previous;
                         temp2->previous = newnode;
@@ -66,21 +64,99 @@ void printQueue(struct node *front) {
     printf("NULL\n");
 }
 
+int size(struct node *front) {
+    int i = 0;
+    struct node *temp = front;
+    while (temp != NULL) {
+        i++;
+        temp = temp->next;
+    }
+    return i;
+}
+
+void deleteAtPosition(struct node **front, struct node **rear, int pos) {
+    if (*front == NULL) {
+        printf("Queue is empty, cannot delete!\n");
+        return;
+    }
+
+    int s = size(*front);
+    if (pos < 1 || pos > s) {
+        printf("Invalid position! Enter a value between 1 and %d.\n", s);
+        return;
+    }
+
+    struct node *temp = *front;
+    int count = 1;
+
+    // Traverse to the node at position pos
+    while (count < pos) {
+        temp = temp->next;
+        count++;
+    }
+
+    // If deleting the first node
+    if (temp->previous == NULL) {
+        *front = temp->next;
+        if (*front != NULL) {
+            (*front)->previous = NULL;
+        } else {
+            *rear = NULL; // If queue becomes empty
+        }
+    }
+    // If deleting the last node
+    else if (temp->next == NULL) {
+        *rear = temp->previous;
+        (*rear)->next = NULL;
+    }
+    // Deleting a middle node
+    else {
+        temp->previous->next = temp->next;
+        temp->next->previous = temp->previous;
+    }
+
+    free(temp);
+    printf("Deleted element at position %d\n", pos);
+}
+void peeking(struct node **front,struct node **rear){
+    struct node* temp1 = *front,*temp = *rear;;
+    printf("MAX proirty element %d(priority: %d)\n",temp1->data,temp1->priority);
+    
+    printf("MIN proirty element %d(priority: %d)\n",temp->data,temp->priority);
+}
+
 int main() {
     struct node *front = NULL, *rear = NULL;
-    insert(&front, &rear);
-    // struct node* newnode1 = (struct node*)malloc(sizeof(struct node));
-    // newnode1->priority = 1;
-    // newnode1->data = 12;
-    // struct node* newnode2 = (struct node*)malloc(sizeof(struct node));
-    // newnode2->priority = 2;
-    // newnode1->data = 12;
-    // front = newnode1;
-    // rear = newnode2;
-    // newnode1->next = newnode2;
-    // newnode2->next = NULL;
-    // newnode1->previous = NULL;
-    // newnode2->previous = newnode1;
-    printQueue(front);
+    int z = 1;
+    while (z){
+        printf("Enter 1 to 'insert'\nEnter 2 to 'delete'\nEnter 3 'to peeking'\nEnter 0 to 'exit'\n");
+        int y ;
+        int pos ;
+        scanf("%d",&y);
+        switch(y){
+        case 1:
+            insert(&front,&rear);
+            printQueue(front);
+            break;
+        case 2:
+            printf("Enter the position you want to delete\n");
+            scanf("%d",&pos);
+            deleteAtPosition(&front,&rear,pos);
+            printQueue(front);
+            peeking(&front,&rear);
+            break;
+        case 3:
+        peeking(&front,&rear);
+        break;
+        case 0:
+            z=0;
+            break;
+        default:
+            printf("Invaild choice try again");
+
+        }
+
+    }
+    
     return 0;
 }
