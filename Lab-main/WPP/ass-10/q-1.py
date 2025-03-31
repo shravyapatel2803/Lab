@@ -1,7 +1,5 @@
-
 import numpy as np
 import random
-import matplotlib.pyplot as plt
 
 def is_safe(board, row, col, n):
     for i in range(col):
@@ -41,3 +39,16 @@ def generate_n_queens(n=8):
         return board
     else:
         return None
+
+def print_board(board):
+    if board is None:
+        print("No solution found")
+        return
+    
+    for row in board:
+        print(" ".join("Q" if cell == 1 else "." for cell in row))
+    
+if __name__ == "__main__":
+    n = 8  # Change n for different board sizes
+    board = generate_n_queens(n)
+    print_board(board)
