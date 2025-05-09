@@ -2,8 +2,8 @@
 
 
     
-// // A function to do counting sort of arr[] according to
-// // the digit represented by exp.
+// A function to do counting sort of arr[] according to
+// the digit represented by exp.
 void countSort(int arr[], int n, int exp)
 {
 	// output array
